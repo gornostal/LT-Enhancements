@@ -1,0 +1,2 @@
+{:+ {:editor {"ctrl-down" [:lt.plugins.lt-enhancements/scroll-lines.down]
+              "ctrl-up"   [:lt.plugins.lt-enhancements/scroll-lines.up]}}}

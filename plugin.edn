@@ -1,0 +1,6 @@
+{:name "LtEnhancements"
+ :version "0.0.1"
+ :author "Aleksandr Gornostal"
+ :source "https://github.com/gornostal/lt-enhancements"
+ :desc "Adds several features that Sublime Text has but Light Table doesn't"
+ :behaviors "lt_enhancements.behaviors"}
