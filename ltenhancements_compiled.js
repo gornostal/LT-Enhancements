@@ -22,8 +22,8 @@ var more = null;if (arguments.length > 0) {
   more = cljs.core.array_seq(Array.prototype.slice.call(arguments, 0),0);} 
 return log__delegate.call(this,more);};
 log.cljs$lang$maxFixedArity = 0;
-log.cljs$lang$applyTo = (function (arglist__7849){
-var more = cljs.core.seq(arglist__7849);
+log.cljs$lang$applyTo = (function (arglist__7853){
+var more = cljs.core.seq(arglist__7853);
 return log__delegate(more);
 });
 log.cljs$core$IFn$_invoke$arity$variadic = log__delegate;

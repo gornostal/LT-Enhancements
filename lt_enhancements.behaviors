@@ -1,2 +1,2 @@
-{:+ {:app [(:lt.objs.plugins/load-js "lt_enhancements_compiled.js")
+{:+ {:app [(:lt.objs.plugins/load-js "ltenhancements_compiled.js")
            (:lt.objs.plugins/load-keymap "lt_enhancements.keymap")]}}
