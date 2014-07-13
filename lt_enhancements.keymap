@@ -1,2 +1,3 @@
-{:+ {:editor {"ctrl-down" [:lt.plugins.lt-enhancements/scroll-lines.down]
-              "ctrl-up"   [:lt.plugins.lt-enhancements/scroll-lines.up]}}}
+{:+ {:editor {"ctrl-d"    [:lt.plugins.lt-enhancements/select-next-occurrence-token]
+              "ctrl-down" [(:editor.codemirror.command "scrollLineDown")]
+              "ctrl-up"   [(:editor.codemirror.command "scrollLineUp")]}}}

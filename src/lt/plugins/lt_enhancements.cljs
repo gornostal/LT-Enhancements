@@ -6,22 +6,25 @@
             [lt.objs.editor.pool :as pool])
   (:require-macros [lt.macros :refer [defui behavior]]))
 
-#_(object/object* ::lt-enhancements.hello
-                :tags [:lt-enhancements.hello]
-                :name "lt-enhancements"
-                :init (fn [this]
-                        (hello-panel this)))
+(defn- log [& more]
+  (.log js/console (clj->js more)))
 
-#_(def scroll (object/create ::lt-enhancements.hello))
+(defn- has-selection? [cm]
+  (.doc.somethingSelected cm))
 
-(cmd/command {:command ::scroll-lines.down
-              :desc "Lt Enhancements: scroll lines down"
+(defn- select-token [cm]
+  (let [cur (.getCursor cm)
+        token (.getTokenAt cm cur)
+        start (js/CodeMirror.Pos. (.-line cur) (.-start token))
+        end (js/CodeMirror.Pos. (.-line cur) (.-end token))]
+    (.setSelection cm start end)))
+
+(cmd/command {:command ::select-next-occurrence-token
+              :desc "Lt Enhancements: select next occurrence of a token"
               :exec (fn []
                       (when-let [ed (pool/last-active)]
-                        (js/CodeMirror.commands.scrollLineDown (editor/->cm-ed ed))))})
+                        (let [cm (editor/->cm-ed ed)]
+                          (if (has-selection? cm)
+                            (js/CodeMirror.commands.selectNextOccurrence cm)
+                            (select-token cm)))))})
 
-(cmd/command {:command ::scroll-lines.up
-              :desc "Lt Enhancements: scroll lines up"
-              :exec (fn []
-                      (when-let [ed (pool/last-active)]
-                        (js/CodeMirror.commands.scrollLineUp (editor/->cm-ed ed))))})
